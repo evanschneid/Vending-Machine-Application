@@ -1,7 +1,6 @@
 package com.techelevator.ui;
 
-import java.math.BigDecimal;
-import java.util.Map;
+import java.util.Scanner;
 
 
 /**
@@ -12,6 +11,7 @@ import java.util.Map;
  */
 public class UserOutput
 {
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void displayMessage(String message)
     {
@@ -27,6 +27,25 @@ public class UserOutput
         System.out.println("                      Home");
         System.out.println("***************************************************");
         System.out.println();
+    }
+
+    public static void getFeedMoney() {
+        System.out.println("Please input whole dollar whole-amounts only.");
+        System.out.println("Whole dollar amounts: $1=(1), $5, $10, or $20");
+    }
+
+    public static void displayPurcahseScreen() {
+        System.out.println("What would you like to do?");
+        System.out.println();
+
+        System.out.println("M) Feed Money");
+        System.out.println("S) Select Item");
+        System.out.println("F) Finish Transaction");
+        System.out.println();
+        System.out.println("Current Money Provided: ");
+
+        System.out.println();
+        System.out.print("Please select an option: ");
     }
 
 }

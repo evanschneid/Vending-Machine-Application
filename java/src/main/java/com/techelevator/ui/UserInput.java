@@ -1,6 +1,9 @@
 package com.techelevator.ui;
 
+import com.techelevator.models.Money;
+
 import java.math.BigDecimal;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -25,7 +28,7 @@ public class UserInput
         System.out.print("Please select an option: ");
 
         String selectedOption = scanner.nextLine();
-        String option = selectedOption.trim().toLowerCase();
+        String option = selectedOption.trim().toUpperCase();
 
         if (option.equals("D"))
         {
@@ -33,6 +36,33 @@ public class UserInput
         }
         else if (option.equals("P"))
         {
+            UserOutput.displayPurcahseScreen();
+            selectedOption = scanner.nextLine();
+            option = selectedOption.trim().toUpperCase();
+
+            if (option.equals("M")) {
+                BigDecimal currentNum = BigDecimal.valueOf(0);
+
+                do {
+                    UserOutput.getFeedMoney();
+                    selectedOption = scanner.nextLine();
+                    option = selectedOption.trim().toUpperCase();
+                    int test = Integer.parseInt(option);
+                    BigDecimal optionNum = BigDecimal.valueOf(test);
+                    currentNum.add(optionNum);
+                }while (!option.equals("M"));
+
+
+            }
+            else if (option.equals("S")) {
+                selectedOption = scanner.nextLine();
+                option = selectedOption.trim().toUpperCase();
+            }
+            else if (option.equals("F")) {
+                selectedOption = scanner.nextLine();
+                option = selectedOption.trim().toUpperCase();
+            }
+
             return "purchase";
         }
         else if (option.equals("E"))
