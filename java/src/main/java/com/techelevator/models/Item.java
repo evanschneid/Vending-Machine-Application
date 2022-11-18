@@ -1,6 +1,7 @@
 package com.techelevator.models;
 
 import java.math.BigDecimal;
+import java.util.function.BiFunction;
 
 public abstract class Item {
 
@@ -21,6 +22,14 @@ public abstract class Item {
         return idName + ", "+ name + ", $" + price + ", " + type;
     }
 
+    // within vending machine, we get the idname and then this will return price
+    public BigDecimal getPriceOfItem(String idName) {
+        this.price = price;
+        double priceDouble = Double.parseDouble(price);
+        BigDecimal itemPriceBD = BigDecimal.valueOf(priceDouble);
+        return itemPriceBD;
+    }
+
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
 
@@ -30,8 +39,14 @@ public abstract class Item {
     public String getIdName() {return idName;}
     public void setIdName(String idName) {this.idName = idName;}
 
+    public String getType() {return type;}
+    public void setType(String type) {this.type = type;}
+
+    public abstract String getMessage();
+
     public BigDecimal getPriceBD() {
         double priceDouble = Double.parseDouble(price);
         BigDecimal priceBD = new BigDecimal(priceDouble);
         return priceBD;}
+
 }

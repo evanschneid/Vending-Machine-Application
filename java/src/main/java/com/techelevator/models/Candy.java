@@ -8,8 +8,9 @@ public class Candy extends Item{
 
     public Candy(String idName, String name, String price, String type) {
         super(idName, name, price, type);
-       this.message = "Sugar, Sugar, so Sweet!";
     }
 
-    public String getMessage() {return message;}
+    public String getMessage() {
+        return "Sugar, Sugar, so Sweet!";
+    }
 }

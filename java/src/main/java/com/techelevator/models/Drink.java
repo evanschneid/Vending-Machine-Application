@@ -6,8 +6,7 @@ public class Drink extends Item{
 
     public Drink(String idName, String name, String price, String type) {
         super(idName, name, price, type);
-        this.message = "Drinky, Drinky, Slurp Slurp!";
     }
 
-    public String getMessage() {return message;}
+    public String getMessage() {return "Drinky, Drinky, Slurp Slurp!";}
 }

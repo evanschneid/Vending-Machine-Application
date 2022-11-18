@@ -8,8 +8,7 @@ public class Gum extends Item{
 
     public Gum(String idName, String name, String price, String type) {
         super(idName, name, price, type);
-        this.message = "Chewy, Chewy, Lots O Bubbles!";
     }
 
-    public String getMessage() {return message;}
+    public String getMessage() {return "Chewy, Chewy, Lots O Bubbles!";}
 }

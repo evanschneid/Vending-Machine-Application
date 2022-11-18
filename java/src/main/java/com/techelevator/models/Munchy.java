@@ -8,8 +8,7 @@ public class Munchy extends Item{
 
     public Munchy(String idName, String name, String price, String type) {
         super(idName, name, price, type);
-        this.message = "Munchy, Munchy, so Good!";
     }
 
-    public String getMessage() {return message;}
+    public String getMessage() {return "Munchy, Munchy, so Good!";}
 }

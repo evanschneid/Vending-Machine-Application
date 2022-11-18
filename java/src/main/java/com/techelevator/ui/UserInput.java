@@ -1,8 +1,12 @@
 package com.techelevator.ui;
 
+import com.techelevator.models.Inventory;
+import com.techelevator.models.Item;
 import com.techelevator.models.Money;
+import com.techelevator.models.Munchy;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -11,70 +15,96 @@ import java.util.Scanner;
  * 
  * Dependencies: None
  */
-public class UserInput
-{
+public class UserInput {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static String getHomeScreenOption()
-    {
-        System.out.println("What would you like to do?");
-        System.out.println();
+    public String getUserInput(){
+        String selectedOption = scanner.nextLine();
+        return selectedOption;
+    }
 
-        System.out.println("D) Display Vending Machine Items");
-        System.out.println("P) Purchase");
-        System.out.println("E) Exit");
-
-        System.out.println();
-        System.out.print("Please select an option: ");
-
+    public static String getHomeScreenOption() {
         String selectedOption = scanner.nextLine();
         String option = selectedOption.trim().toUpperCase();
 
-        if (option.equals("D"))
-        {
+        if (option.equals("D")) {
             return "display";
         }
-        else if (option.equals("P"))
-        {
-            UserOutput.displayPurcahseScreen();
-            selectedOption = scanner.nextLine();
-            option = selectedOption.trim().toUpperCase();
-
-            if (option.equals("M")) {
-                BigDecimal currentNum = BigDecimal.valueOf(0);
-
-                do {
-                    UserOutput.getFeedMoney();
-                    selectedOption = scanner.nextLine();
-                    option = selectedOption.trim().toUpperCase();
-                    int test = Integer.parseInt(option);
-                    BigDecimal optionNum = BigDecimal.valueOf(test);
-                    currentNum.add(optionNum);
-                }while (!option.equals("M"));
-
-
-            }
-            else if (option.equals("S")) {
-                selectedOption = scanner.nextLine();
-                option = selectedOption.trim().toUpperCase();
-            }
-            else if (option.equals("F")) {
-                selectedOption = scanner.nextLine();
-                option = selectedOption.trim().toUpperCase();
-            }
-
+        else if (option.equals("P")) {
             return "purchase";
         }
-        else if (option.equals("E"))
-        {
+        else if (option.equals("E")) {
             return "exit";
         }
-        else
-        {
+        else {
             return "";
         }
 
     }
 
-    
+    public static String getPurchaseScreen() {
+        String selectedOption = scanner.nextLine();
+        String option = selectedOption.trim().toUpperCase();
+
+        if (option.equals("M")) {
+            return "Feed Money";
+        }
+        else if (option.equals("S")) {
+            return "Select Item";
+        }
+        else if (option.equals("F")) {
+            return "Finish Transaction";
+        }
+        return "";
+    }
+
+    public static String getFeedMoneyScreen() {
+        String selectedOption = scanner.nextLine();
+        String option = selectedOption.trim().toUpperCase();
+
+        if (option.equals("1")) {
+            return "1";
+        }
+        else if (option.equals("5")) {
+            return "5";
+        }
+        else if (option.equals("10")) {
+            return "10";
+        }
+        else if (option.equals("20")) {
+            return "20";
+        }
+        else if (option.equals("E")) {
+            return "Exit";
+        }
+        return "";
+
+    }
+
+    public static String getSelectItemScreen() {
+        String selectedOption = scanner.nextLine();
+        String option = selectedOption.trim().toUpperCase();
+
+        return option;
+    }
+
+//             BigDecimal currentNum = BigDecimal.valueOf(0);
+//            Money test = new Money();
+//
+//            UserOutput.getFeedMoney();
+//            selectedOption = scanner.nextLine();
+//            option = selectedOption.trim().toUpperCase();
+//            test.getCurrentBalance(option);
+//
+//
+//            System.out.println("Current Money Provided: " + currentNum);
+//
+//        }
+//        else if (option.equals("S")) {
+//            selectedOption = scanner.nextLine();
+//            option = selectedOption.trim().toUpperCase();
+//        }
+//        else if (option.equals("F")) {
+//            selectedOption = scanner.nextLine();
+//            option = selectedOption.trim().toUpperCase();
 }
