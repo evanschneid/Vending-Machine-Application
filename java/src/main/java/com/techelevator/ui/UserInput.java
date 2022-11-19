@@ -5,9 +5,6 @@ import com.techelevator.models.Item;
 import com.techelevator.models.Money;
 import com.techelevator.models.Munchy;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -18,28 +15,24 @@ import java.util.Scanner;
 public class UserInput {
     private static Scanner scanner = new Scanner(System.in);
 
-    public String getUserInput(){
-        String selectedOption = scanner.nextLine();
-        return selectedOption;
-    }
-
     public static String getHomeScreenOption() {
         String selectedOption = scanner.nextLine();
         String option = selectedOption.trim().toUpperCase();
+            if (option.equals("D")) {
+                return "display";
+            } else if (option.equals("P")) {
+                return "purchase";
+            } else if (option.equals("E")) {
+                return "exit";
+            } else {
+                return "Please select from options above.";
+            }
+    }
 
-        if (option.equals("D")) {
-            return "display";
-        }
-        else if (option.equals("P")) {
-            return "purchase";
-        }
-        else if (option.equals("E")) {
-            return "exit";
-        }
-        else {
-            return "";
-        }
-
+    public static String getDisplayInventoryOption() {
+        String selectedOption = scanner.nextLine();
+        String option = selectedOption.trim().toUpperCase();
+        return option;
     }
 
     public static String getPurchaseScreen() {

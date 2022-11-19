@@ -9,13 +9,11 @@ import java.util.List;
 
 public class Money {
 
-    private String startingBalance;
-    private String finalBalance;
+    private BigDecimal balance = BigDecimal.ZERO;
     private BigDecimal quarter = new BigDecimal(0.25);
     private BigDecimal dime = new BigDecimal(0.10);
     private BigDecimal nickel = new BigDecimal(0.05);
 
-    private BigDecimal balance = BigDecimal.ZERO;
 
     public void addToBalance(BigDecimal amount) {
         this.balance = this.balance.add(amount);
@@ -37,8 +35,6 @@ public class Money {
         BigDecimal newPrice = price.subtract(BigDecimal.ONE);
         this.balance = this.balance.subtract(newPrice);
     }
-    // method for make change
-
 
 
 //    public int getCurrentBalance(String currentBalance, String moneyAdded) {

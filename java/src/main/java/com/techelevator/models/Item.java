@@ -32,6 +32,7 @@ public abstract class Item {
         return inventory;
     }
 
+
     // within vending machine, we get the idname and then this will return price
     public BigDecimal getPriceOfItem(String idName) {
         this.price = price;
@@ -40,7 +41,11 @@ public abstract class Item {
         return itemPriceBD;
     }
 
-
+    public BigDecimal getPriceBD() {
+        double priceDouble = Double.parseDouble(price);
+        BigDecimal priceBD = new BigDecimal(priceDouble);
+        return priceBD;
+    }
 
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
@@ -55,10 +60,5 @@ public abstract class Item {
     public void setType(String type) {this.type = type;}
 
     public abstract String getMessage();
-
-    public BigDecimal getPriceBD() {
-        double priceDouble = Double.parseDouble(price);
-        BigDecimal priceBD = new BigDecimal(priceDouble);
-        return priceBD;}
 
 }

@@ -46,21 +46,22 @@ public class UserOutput
     }
 
     public static void displayInventoryOutput() {
+        System.out.println();
         Inventory itemList = new Inventory();
         for (Item invItemList: itemList.getInventoryList()){
             System.out.println(invItemList.toString());
         }
+        System.out.println();
     }
 
 
     public static void displayPurcahseScreen() {
+        System.out.println();
         System.out.println("What would you like to do?");
         System.out.println();
-
         System.out.println("M) Feed Money");
         System.out.println("S) Select Item");
         System.out.println("F) Finish Transaction");
-        System.out.println();
         System.out.println();
         System.out.print("Please select an option: ");
     }
@@ -69,6 +70,7 @@ public class UserOutput
         System.out.println();
         System.out.println("Please input whole dollar whole-amounts only.");
         System.out.println("Whole dollar amounts: $1=(1), $5=(5), $10=(10), or $20=(20)");
+        System.out.println();
         System.out.println("P) Select to go back to Purchase menu.");
         System.out.println();
     }
@@ -83,12 +85,15 @@ public class UserOutput
             System.out.println(invItemList.toString());
         }
         System.out.println();
-        System.out.println("Please select an item to order by item code (B4 or A3).");
-        System.out.println("Click (F) if finished selecting");
+        System.out.println("Please select an item to order by item code.");
+        System.out.println("Letter followed by number. Example:(A4 or C2)");
+        System.out.println();
+        System.out.println("F) if finished selecting");
     }
 
     public static void displayFinalTransaction() {
-        System.out.println("*****Dispensing Change******");
+        System.out.println();
+        System.out.println("********Dispensing Change*********");
     }
 
 }

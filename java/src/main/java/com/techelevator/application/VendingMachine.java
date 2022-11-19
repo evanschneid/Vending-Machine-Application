@@ -6,11 +6,7 @@ import com.techelevator.models.Money;
 import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
 
-import javax.crypto.spec.IvParameterSpec;
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.math.MathContext;
-import java.math.RoundingMode;
 import java.util.List;
 
 public class VendingMachine
@@ -20,9 +16,6 @@ public class VendingMachine
     private Money money = new Money();
 
     public void run() {
-//        String userAnswer = userInput.getUserInput();
-
-        String startingBalance = "0";
 
         while(true)
         {
@@ -33,15 +26,14 @@ public class VendingMachine
             {
                 // display the vending machine slots
                 UserOutput.displayInventoryOutput();
+                System.out.println("Press ENTER to continue");
+                choice = UserInput.getDisplayInventoryOption();
             }
-            //while(!choice.equals("Exit")) {
              else if (choice.equals("purchase")) {
                     // make a purchase
                     UserOutput.displayPurcahseScreen();
                     choice = UserInput.getPurchaseScreen();
                     while (!choice.equals("Finish Transaction")) {
-                        //UserOutput.displayPurcahseScreen();
-                        //choice = UserInput.getPurchaseScreen();
                         if (choice.equals("Feed Money")) {
                             UserOutput.displayFeedMoney();
                             System.out.println("Current money provided: " + money.getBalance());
@@ -52,10 +44,11 @@ public class VendingMachine
 //                                UserOutput.displayFeedMoney();
 //                                //System.out.println(money.getBalance());
 
-                                money.addToBalance(inputNumber);
-                                System.out.println("New balance: " + "$" + money.getBalance());
-                                System.out.println("Press ENTER to continue");
-                                choice = UserInput.getFeedMoneyScreen();
+                            money.addToBalance(inputNumber);
+                            System.out.println("New balance: " + "$" + money.getBalance());
+                            System.out.println();
+                            System.out.println("Press ENTER to continue");
+                            choice = UserInput.getFeedMoneyScreen();
 //                                if (money.getBalance().equals(0)) {
 //                                    System.out.println(money.getBalance());
 //                                    money.addToBalance(inputNumber);
@@ -87,7 +80,7 @@ public class VendingMachine
                                     if (choice.equals(invList.get(i).getIdName())) {
                                         BigDecimal itemPriceBD = money.stringToBigDecimal(invList.get(i).getPrice());
                                         if (invList.get(i).getInventory() == 0) {
-                                            System.out.println("That item is sold out");
+                                            System.out.println("NO LONGER AVAILABLE");
                                         } else {
                                             if (counter % 2 != 0){
                                                 money.boGoDo(itemPriceBD);
@@ -102,9 +95,11 @@ public class VendingMachine
                                                 //BigDecimal itemPriceBD = money.stringToBigDecimal(invList.get(i).getPrice());
                                                 money.decreaseBalance(itemPriceBD);
                                             }
+                                            System.out.println();
                                             System.out.println(invList.get(i).toString());
                                             System.out.println(invList.get(i).getMessage());
-                                            System.out.println(money.getBalance());
+                                            System.out.println();
+                                            System.out.println("Remaining Balance: $" + money.getBalance());
                                             System.out.println();
                                             counter++;
                                             //                                        BigDecimal inputNumber = money.stringToBigDecimal(choice);
@@ -137,11 +132,12 @@ public class VendingMachine
 //                        int scale = 2;
 //                        BigDecimal coins = toChange.setScale(scale);
 
-                        System.out.println("Amount to change: " + money.getBalance());
+                        System.out.println("Change to Receive: $" + money.getBalance());
                         UserOutput.displayFinalTransaction();
                         //toChange.toBigIntegerExact();
                         if(money.getBalance().remainder(BigDecimal.ONE).compareTo(BigDecimal.ZERO) == 0) {
-                            System.out.println(money.getBalance() + " dollars");
+                           // System.out.println(money.getBalance() + " dollars");
+                            money.getChange();
                         }  else {
 //                            BigInteger dollars = money.getBalance().toBigInteger();
 //                            BigDecimal change = money.getBalance().remainder(BigDecimal.ONE);

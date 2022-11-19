@@ -36,7 +36,9 @@ public class Inventory {
                 }
             }
 
-        }catch (FileNotFoundException e){}
+        }catch (FileNotFoundException e){
+            System.out.println("File Not Found");
+        }
 
         return inventoryList;
     }
