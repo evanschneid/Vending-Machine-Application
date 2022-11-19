@@ -19,19 +19,19 @@ public class Inventory {
                 String line = fileInput.nextLine();
                 String[] arrayLine = line.split(",");
                 if (arrayLine[3].equals("Gum")) {
-                    Item itemDetails = new Gum(arrayLine[0], arrayLine[1], arrayLine[2], arrayLine[3]);
+                    Item itemDetails = new Gum(arrayLine[0], arrayLine[1], arrayLine[2], arrayLine[3], 6);
                     inventoryList.add(itemDetails);
                 }
                 if (arrayLine[3].equals("Candy")) {
-                    Item itemDetails = new Candy(arrayLine[0], arrayLine[1], arrayLine[2], arrayLine[3]);
+                    Item itemDetails = new Candy(arrayLine[0], arrayLine[1], arrayLine[2], arrayLine[3], 6);
                     inventoryList.add(itemDetails);
                 }
                 if (arrayLine[3].equals("Munchy")) {
-                    Item itemDetails = new Munchy(arrayLine[0], arrayLine[1], arrayLine[2], arrayLine[3]);
+                    Item itemDetails = new Munchy(arrayLine[0], arrayLine[1], arrayLine[2], arrayLine[3], 6);
                     inventoryList.add(itemDetails);
                 }
                 if (arrayLine[3].equals("Drink")) {
-                    Item itemDetails = new Drink(arrayLine[0], arrayLine[1], arrayLine[2], arrayLine[3]);
+                    Item itemDetails = new Drink(arrayLine[0], arrayLine[1], arrayLine[2], arrayLine[3], 6);
                     inventoryList.add(itemDetails);
                 }
             }

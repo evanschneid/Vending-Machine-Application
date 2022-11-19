@@ -74,8 +74,8 @@ public class UserInput {
         else if (option.equals("20")) {
             return "20";
         }
-        else if (option.equals("E")) {
-            return "Exit";
+        else if (option.equals("P")) {
+            return "purchase";
         }
         return "";
 
@@ -84,9 +84,20 @@ public class UserInput {
     public static String getSelectItemScreen() {
         String selectedOption = scanner.nextLine();
         String option = selectedOption.trim().toUpperCase();
+        if (option.equals("F")){
+            return "Finish Transaction";
+        }
 
         return option;
     }
+
+    public static String getFinalTransactionScreen() {
+        String selectedOption = scanner.nextLine();
+        String option = selectedOption.trim().toUpperCase();
+        return option;
+    }
+
+
 
 //             BigDecimal currentNum = BigDecimal.valueOf(0);
 //            Money test = new Money();

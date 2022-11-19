@@ -9,17 +9,27 @@ public abstract class Item {
     private String name;
     private String price;
     private String type;
+    private int inventory = 6;
 
-    public Item(String idName, String name, String price, String type) {
+    public Item(String idName, String name, String price, String type, int inventory) {
         this.idName = idName;
         this.name = name;
         this.price = price;
         this.type = type;
+        this.inventory = inventory;
     }
 
     @Override
     public String toString() {
         return idName + ", "+ name + ", $" + price + ", " + type;
+    }
+
+    public void decreaseInventory() {
+        this.inventory = this.inventory - 1;
+    }
+
+    public int getInventory() {
+        return inventory;
     }
 
     // within vending machine, we get the idname and then this will return price
@@ -29,6 +39,8 @@ public abstract class Item {
         BigDecimal itemPriceBD = BigDecimal.valueOf(priceDouble);
         return itemPriceBD;
     }
+
+
 
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}

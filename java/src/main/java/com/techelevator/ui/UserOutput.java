@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class UserOutput
 {
     private static Scanner scanner = new Scanner(System.in);
-    private Money money = new Money();
+    private static Money money = new Money();
 
     public static void displayMessage(String message)
     {
@@ -61,7 +61,6 @@ public class UserOutput
         System.out.println("S) Select Item");
         System.out.println("F) Finish Transaction");
         System.out.println();
-
         System.out.println();
         System.out.print("Please select an option: ");
     }
@@ -70,7 +69,7 @@ public class UserOutput
         System.out.println();
         System.out.println("Please input whole dollar whole-amounts only.");
         System.out.println("Whole dollar amounts: $1=(1), $5=(5), $10=(10), or $20=(20)");
-        System.out.println("E) Select to go back to Purchase menu.");
+        System.out.println("P) Select to go back to Purchase menu.");
         System.out.println();
     }
 
@@ -85,7 +84,11 @@ public class UserOutput
         }
         System.out.println();
         System.out.println("Please select an item to order by item code (B4 or A3).");
-        System.out.println();
+        System.out.println("Click (F) if finished selecting");
+    }
+
+    public static void displayFinalTransaction() {
+        System.out.println("*****Dispensing Change******");
     }
 
 }
