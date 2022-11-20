@@ -10,6 +10,8 @@ public abstract class Item {
     private String price;
     private String type;
     private int inventory = 6;
+    private int startingSaleAmount = 0;
+    private int startingBOGODOSaleAmount = 0;
 
     public Item(String idName, String name, String price, String type, int inventory) {
         this.idName = idName;
@@ -28,41 +30,29 @@ public abstract class Item {
         this.inventory = this.inventory - 1;
     }
 
+    public int getStartingSaleAmount() {return startingSaleAmount;}
+
+    public void increaseSalesAmount() {this.startingSaleAmount = this.startingSaleAmount + 1;}
+
+    public int getStartingBOGODOSaleAmount() {return startingBOGODOSaleAmount;}
+
+    public void increaseBOGODOSalesAmount() {this.startingBOGODOSaleAmount = this.startingBOGODOSaleAmount + 1;}
+
     public int getInventory() {
         return inventory;
     }
 
-
-    // within vending machine, we get the idname and then this will return price
-    public BigDecimal getPriceOfItem(String idName) {
-        this.price = price;
-        double priceDouble = Double.parseDouble(price);
-        BigDecimal itemPriceBD = BigDecimal.valueOf(priceDouble);
-        return itemPriceBD;
-    }
-
-    public BigDecimal getPriceBD() {
-        double priceDouble = Double.parseDouble(price);
-        BigDecimal priceBD = new BigDecimal(priceDouble);
-        return priceBD;
-    }
-
-    public void setInventory(int inventory) {
-        this.inventory = inventory;
-    }
-
     public String getName() {return name;}
-    public void setName(String name) {this.name = name;}
 
     public String getPrice() {return price;}
-    public void setPrice(String price) {this.price = price;}
 
     public String getIdName() {return idName;}
-    public void setIdName(String idName) {this.idName = idName;}
 
     public String getType() {return type;}
-    public void setType(String type) {this.type = type;}
 
     public abstract String getMessage();
 
+    public void setStartingSaleAmount(int startingSaleAmount) {this.startingSaleAmount = startingSaleAmount;}
+
+    public void setStartingBOGODOSaleAmount(int startingBOGODOSaleAmount) {this.startingBOGODOSaleAmount = startingBOGODOSaleAmount;}
 }

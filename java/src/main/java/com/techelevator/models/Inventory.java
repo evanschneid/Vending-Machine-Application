@@ -39,16 +39,17 @@ public class Inventory {
         }catch (FileNotFoundException e){
             System.out.println("File Not Found");
         }
-
         return inventoryList;
     }
 
+    // What is the best way to test this?
+    // we attempted to create a test that would compare a map we populated with the expected answers but the actual was always empty
+    // we assumed it was an issue with the inventory list using the file from the method above
     public Map<String, String> inventoryListToMap() {
         for (Item itemMap: inventoryList) {
             inventoryMap.put(itemMap.getIdName(), itemMap.getName());
         }
         return inventoryMap;
     }
-
 
 }

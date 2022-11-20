@@ -1,11 +1,13 @@
 package com.techelevator.ui;
 
+import com.techelevator.application.VendingMachine;
 import com.techelevator.models.Inventory;
 import com.techelevator.models.Item;
-import com.techelevator.models.Money;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.Scanner;
-
 
 /**
  * Responsibilities: This class should handle formatting and displaying ALL
@@ -15,12 +17,13 @@ import java.util.Scanner;
  */
 public class UserOutput
 {
-    private static Scanner scanner = new Scanner(System.in);
-    private static Money money = new Money();
 
     public static void displayMessage(String message)
     {
         System.out.println(message);
+    }
+    public static void displayEmptyLine()
+    {
         System.out.println();
     }
 
@@ -74,11 +77,8 @@ public class UserOutput
         System.out.print("Please select an option: ");
     }
 
-    public static String displayCurrentBalance(int number) {
-        return "Current Balance: $" + number;
-    }
-
     public static void displaySelectItem() {
+        System.out.println();
         Inventory itemList = new Inventory();
         for (Item invItemList: itemList.getInventoryList()){
             System.out.println(invItemList.toString());
@@ -103,6 +103,19 @@ public class UserOutput
 //        System.out.println("Dimes: " + array[2]);
 //        System.out.println("Nickels: " + array[3]);
 
+    }
+
+    public static void displaySalesReport() {
+        File salesReport = new File("SalesReport.txt");
+        try (Scanner reportReader = new Scanner(salesReport)) {
+            System.out.println();
+            while (reportReader.hasNextLine()) {
+                String line = reportReader.nextLine();
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException e){
+            System.out.println(salesReport.getName() + " had an error.");
+        }
     }
 
 }

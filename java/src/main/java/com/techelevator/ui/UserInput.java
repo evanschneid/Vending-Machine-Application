@@ -1,10 +1,5 @@
 package com.techelevator.ui;
 
-import com.techelevator.models.Inventory;
-import com.techelevator.models.Item;
-import com.techelevator.models.Money;
-import com.techelevator.models.Munchy;
-
 import java.util.Scanner;
 
 /**
@@ -22,11 +17,14 @@ public class UserInput {
             return "display";
         } else if (option.equals("P")) {
             return "purchase";
+        } else if (option.equals("S")) {
+            return "sales report";
         } else if (option.equals("E")) {
             return "exit";
         } else {
-            UserOutput.displayMessage("Please make a valid selection");
-            return "";
+            UserOutput.displayHomeScreen();
+            UserOutput.displayMessage("\n\n" + option + " is not valid. Please make another selection.");
+            return getHomeScreenOption();
         }
     }
 
@@ -47,9 +45,9 @@ public class UserInput {
         } else if (option.equals("F")) {
             return "Finish Transaction";
         } else {
-            UserOutput.displayMessage("Please make a valid selection");
             UserOutput.displayPurcahseScreen();
-            return "";
+            UserOutput.displayMessage("\n \n" + option + " is not valid. Please make another selection.");
+            return getPurchaseScreen();
         }
     }
 
@@ -70,7 +68,7 @@ public class UserInput {
                 return "0";
             }
             else {
-                UserOutput.displayMessage("Please make a valid selection");
+                UserOutput.displayMessage("\n \n" + option + " is not valid. Please make another selection.");
                 return "0";
             }
         } catch (NumberFormatException e) {
@@ -87,37 +85,10 @@ public class UserInput {
                 return "Finish Transaction";
             }
         } catch (NullPointerException e) {
-            UserOutput.displayMessage("Please make a valid selection");
+            UserOutput.displayMessage("Please make another selection.");
             UserOutput.displaySelectItem();
         }
         return option;
     }
 
-    public static String getFinalTransactionScreen() {
-        String selectedOption = scanner.nextLine();
-        String option = selectedOption.trim().toUpperCase();
-        return "";
-    }
-
-
-
-//             BigDecimal currentNum = BigDecimal.valueOf(0);
-//            Money test = new Money();
-//
-//            UserOutput.getFeedMoney();
-//            selectedOption = scanner.nextLine();
-//            option = selectedOption.trim().toUpperCase();
-//            test.getCurrentBalance(option);
-//
-//
-//            System.out.println("Current Money Provided: " + currentNum);
-//
-//        }
-//        else if (option.equals("S")) {
-//            selectedOption = scanner.nextLine();
-//            option = selectedOption.trim().toUpperCase();
-//        }
-//        else if (option.equals("F")) {
-//            selectedOption = scanner.nextLine();
-//            option = selectedOption.trim().toUpperCase();
 }

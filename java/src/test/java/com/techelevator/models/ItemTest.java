@@ -14,6 +14,8 @@ public class ItemTest {
     @Before
     public void setup () {
         Item item4 = new Munchy("D3", "Popcorn", "1.75", "Munchy", 6);
+        item.setStartingSaleAmount(0);
+        item.setStartingBOGODOSaleAmount(0);
     }
      @Test
     public void decreaseInventory_returns_5_when_inventory_is_6(){
@@ -23,7 +25,20 @@ public class ItemTest {
         Assert.assertEquals(expected, result);
     }
 
+    @Test
+    public void test_increaseSalesAmount_by_1() {
+        int expected = 1;
+        item.increaseSalesAmount();
+        int result = item.getStartingSaleAmount();
+        Assert.assertEquals(expected, result);
+    }
 
-
+    @Test
+    public void test_increaseBOGODOSalesAmount_by_1() {
+        int expected = 1;
+        item.increaseBOGODOSalesAmount();
+        int result = item.getStartingBOGODOSaleAmount();
+        Assert.assertEquals(expected, result);
+    }
 
 }

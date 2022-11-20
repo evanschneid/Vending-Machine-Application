@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.math.RoundingMode;
 
 public class MoneyTest {
@@ -16,6 +15,7 @@ public class MoneyTest {
     public void setup() {
         money = new Money();
         money.setBalance(BigDecimal.valueOf(10.00));
+        money.setTotalSales(BigDecimal.valueOf(1.00));
     }
 
     @Test
@@ -84,6 +84,14 @@ public class MoneyTest {
     }
 
     @Test
+    public void getChange_1100_passed_returns_11_0_0_0() {
+        money.addToBalance(BigDecimal.valueOf(1.00));
+        int[] expected = {11, 0, 0, 0};
+        int[] result = money.getChange();
+        Assert.assertArrayEquals(expected, result);
+    }
+
+    @Test
     public void testAddToBalance() {
         money.addToBalance(BigDecimal.valueOf(1.75));
         BigDecimal expected = BigDecimal.valueOf(11.75);
@@ -99,4 +107,20 @@ public class MoneyTest {
         Assert.assertEquals(expected, result);
     }
 
+    @Test
+    public void test_balanceAfterChangeMade_return_0() {
+        money.balanceAfterChangeMade();
+        BigDecimal test = BigDecimal.ZERO;
+        BigDecimal expected = test.setScale(2, RoundingMode.HALF_UP);
+        BigDecimal result = money.getBalance();
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void test_addToTotalSales_175() {
+        money.addToTotalSales(BigDecimal.valueOf(1.75));
+        BigDecimal expected = BigDecimal.valueOf(2.75);
+        BigDecimal result = money.getTotalSales();
+        Assert.assertEquals(expected, result);
+    }
 }
