@@ -46,8 +46,11 @@ public class UserInput {
             return "Select Item";
         } else if (option.equals("F")) {
             return "Finish Transaction";
+        } else {
+            UserOutput.displayMessage("Please make a valid selection");
+            UserOutput.displayPurcahseScreen();
+            return "";
         }
-        return "";
     }
 
     public static String getFeedMoneyScreen() {
@@ -62,7 +65,7 @@ public class UserInput {
                 return "10";
             } else if (option.equals("20")) {
                 return "20";
-            } else if(option.equals("0")){
+            } else if(option.equals("P")){
                 UserOutput.displayPurcahseScreen();
                 return "0";
             }
@@ -93,7 +96,7 @@ public class UserInput {
     public static String getFinalTransactionScreen() {
         String selectedOption = scanner.nextLine();
         String option = selectedOption.trim().toUpperCase();
-        return option;
+        return "";
     }
 
 

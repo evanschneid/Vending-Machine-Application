@@ -1,14 +1,14 @@
 package com.techelevator.models;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Inventory {
 
     private List<Item> inventoryList = new ArrayList<>();
+    private Map<String, String> inventoryMap = new HashMap<>();
 
     public List<Item> getInventoryList() {
         File newInventory = new File("catering.csv");
@@ -42,5 +42,13 @@ public class Inventory {
 
         return inventoryList;
     }
+
+    public Map<String, String> inventoryListToMap() {
+        for (Item itemMap: inventoryList) {
+            inventoryMap.put(itemMap.getIdName(), itemMap.getName());
+        }
+        return inventoryMap;
+    }
+
 
 }

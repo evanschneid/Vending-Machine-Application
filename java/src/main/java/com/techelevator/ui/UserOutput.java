@@ -4,7 +4,6 @@ import com.techelevator.models.Inventory;
 import com.techelevator.models.Item;
 import com.techelevator.models.Money;
 
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 
@@ -21,7 +20,6 @@ public class UserOutput
 
     public static void displayMessage(String message)
     {
-        System.out.println();
         System.out.println(message);
         System.out.println();
     }
@@ -71,8 +69,9 @@ public class UserOutput
         System.out.println("Please input whole dollar whole-amounts only.");
         System.out.println("Whole dollar amounts: $1=(1), $5=(5), $10=(10), or $20=(20)");
         System.out.println();
-        System.out.println("0) Select to go back to Purchase menu.");
+        System.out.println("P) Select to go back to Purchase menu.");
         System.out.println();
+        System.out.print("Please select an option: ");
     }
 
     public static String displayCurrentBalance(int number) {
@@ -89,6 +88,8 @@ public class UserOutput
         System.out.println("Letter followed by number. Example:(A4 or C2)");
         System.out.println();
         System.out.println("F) if finished selecting");
+        System.out.println();
+        System.out.print("Please select an option: ");
     }
 
     public static void displayFinalTransaction() {
