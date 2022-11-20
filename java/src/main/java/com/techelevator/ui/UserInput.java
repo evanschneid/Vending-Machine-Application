@@ -18,15 +18,16 @@ public class UserInput {
     public static String getHomeScreenOption() {
         String selectedOption = scanner.nextLine();
         String option = selectedOption.trim().toUpperCase();
-            if (option.equals("D")) {
-                return "display";
-            } else if (option.equals("P")) {
-                return "purchase";
-            } else if (option.equals("E")) {
-                return "exit";
-            } else {
-                return "Please select from options above.";
-            }
+        if (option.equals("D")) {
+            return "display";
+        } else if (option.equals("P")) {
+            return "purchase";
+        } else if (option.equals("E")) {
+            return "exit";
+        } else {
+            UserOutput.displayMessage("Please make a valid selection");
+            return "";
+        }
     }
 
     public static String getDisplayInventoryOption() {
@@ -41,11 +42,9 @@ public class UserInput {
 
         if (option.equals("M")) {
             return "Feed Money";
-        }
-        else if (option.equals("S")) {
+        } else if (option.equals("S")) {
             return "Select Item";
-        }
-        else if (option.equals("F")) {
+        } else if (option.equals("F")) {
             return "Finish Transaction";
         }
         return "";
@@ -54,33 +53,40 @@ public class UserInput {
     public static String getFeedMoneyScreen() {
         String selectedOption = scanner.nextLine();
         String option = selectedOption.trim().toUpperCase();
-
-        if (option.equals("1")) {
-            return "1";
+        try {
+            if (option.equals("1")) {
+                return "1";
+            } else if (option.equals("5")) {
+                return "5";
+            } else if (option.equals("10")) {
+                return "10";
+            } else if (option.equals("20")) {
+                return "20";
+            } else if(option.equals("0")){
+                UserOutput.displayPurcahseScreen();
+                return "0";
+            }
+            else {
+                UserOutput.displayMessage("Please make a valid selection");
+                return "0";
+            }
+        } catch (NumberFormatException e) {
+            UserOutput.displayPurcahseScreen();
+            return "0";
         }
-        else if (option.equals("5")) {
-            return "5";
-        }
-        else if (option.equals("10")) {
-            return "10";
-        }
-        else if (option.equals("20")) {
-            return "20";
-        }
-        else if (option.equals("P")) {
-            return "purchase";
-        }
-        return "";
-
     }
 
     public static String getSelectItemScreen() {
         String selectedOption = scanner.nextLine();
         String option = selectedOption.trim().toUpperCase();
-        if (option.equals("F")){
-            return "Finish Transaction";
+        try {
+            if (option.equals("F")) {
+                return "Finish Transaction";
+            }
+        } catch (NullPointerException e) {
+            UserOutput.displayMessage("Please make a valid selection");
+            UserOutput.displaySelectItem();
         }
-
         return option;
     }
 

@@ -31,27 +31,9 @@ public class Money {
         this.balance = balance;
     }
 
-    public void boGoDo(BigDecimal price){
-        BigDecimal newPrice = price.subtract(BigDecimal.ONE);
-        this.balance = this.balance.subtract(newPrice);
+    public BigDecimal boGoDo(BigDecimal price){
+        return price.subtract(BigDecimal.ONE);
     }
-
-
-//    public int getCurrentBalance(String currentBalance, String moneyAdded) {
-//        int startBalString = Integer.parseInt(currentBalance);
-//        int moneyAddString = Integer.parseInt(moneyAdded);
-//        return startBalString + moneyAddString;
-//    }
-
-    public BigDecimal getNewBalance(String currentBalance, String itemPrice) {
-        double startDouble = Double.parseDouble(currentBalance);
-        double itemPriceDouble = Double.parseDouble(itemPrice);
-        BigDecimal startBalBD = BigDecimal.valueOf(startDouble);
-        BigDecimal itemPriceBD = BigDecimal.valueOf(itemPriceDouble);
-        BigDecimal newBalanceBD = startBalBD.subtract(itemPriceBD);
-        return newBalanceBD;
-    }
-
 
     public BigDecimal stringToBigDecimal (String balance) {
         double finalBalanceNum = Double.parseDouble(balance);
@@ -59,40 +41,59 @@ public class Money {
         return bd;
     }
 
-    public void getChange() {
-        BigInteger dollars = balance.toBigInteger();
-        BigDecimal cents = balance.remainder(BigDecimal.ONE);
+    public int[] getChange() {
 
-        BigDecimal Quarters = (cents.remainder(quarter).multiply(BigDecimal.valueOf(100))).divide(BigDecimal.valueOf(100.0)) ;
-        BigDecimal Dimes = (Quarters.remainder(dime).multiply(BigDecimal.valueOf(100))).divide(BigDecimal.valueOf(100.0));
-        BigDecimal Nickels = (Dimes.remainder(nickel).multiply(BigDecimal.valueOf(100))).divide(BigDecimal.valueOf(100.0));
-
-        BigDecimal numQuarters = (cents.subtract(Quarters)).divide(quarter);
-        BigDecimal numDimes = (Quarters.subtract(Dimes)).divide(dime);
-        BigDecimal numNickels = (Dimes.subtract(Nickels)).divide(nickel);
-
-            BigInteger intQuarter = numQuarters.toBigInteger();
-            BigInteger intDimes = numDimes.toBigInteger();
-            BigInteger intNickels = numNickels.toBigInteger();
-
-//        BigDecimal quarter = cents.multiply(BigDecimal.valueOf(100)).remainder(BigDecimal.valueOf(25));
-//        cents = cents.subtract(quarter.multiply(BigDecimal.valueOf(25)));
-//        BigDecimal dime = cents.remainder(BigDecimal.valueOf(10));
-//        cents = cents.subtract(dime.multiply(BigDecimal.valueOf(10)));
-//        BigDecimal nickle = cents.remainder(BigDecimal.valueOf(5));
-//        cents = cents.subtract(nickle.multiply(BigDecimal.valueOf(5)));
+        int[] coinArray = new int[4];
+        double changeDue = balance.doubleValue();
 
 
-        try {
-            System.out.println("Number of dollars: " + dollars);
-            System.out.println("Number of quarters: " + intQuarter);
-            System.out.println("Number of dimes: " + intDimes);
-            System.out.println("Number of nickels: " + intNickels);
+        int change = (int) (Math.ceil(changeDue * 100));
+        int dollars = Math.round((int) change / 100);
+        change = change % 100;
+        int quarters = Math.round((int) change / 25);
+        change = change % 25;
+        int dimes = Math.round((int) change / 10);
+        change = change % 10;
+        int nickels = Math.round((int) change / 5);
+        change = change % 5;
 
-        } catch(NullPointerException e) {
+        coinArray[0] = dollars;
+        coinArray[1] = quarters;
+        coinArray[2] = dimes;
+        coinArray[3] = nickels;
 
-        }
+        return coinArray;
     }
+
+//    public void getChange(BigDecimal balance) {
+//        //int[] array = new int[4];
+//        double changeDue = balance.doubleValue();
+//
+//
+//        int change = (int) (Math.ceil(changeDue * 100));
+//        int dollars = Math.round((int) change / 100);
+//        change = change % 100;
+//        int quarters = Math.round((int) change / 25);
+//        change = change % 25;
+//        int dimes = Math.round((int) change / 10);
+//        change = change % 10;
+//        int nickels = Math.round((int) change / 5);
+//        change = change % 5;
+//        // int pennies = Math.round((int) change / 1);
+//
+////        array[0] = dollars;
+////        array[1] = quarters;
+////        array[2] = dimes;
+////        array[3] = nickels;
+//
+//        System.out.println("Dollars: " + dollars);
+//        System.out.println("Quarters: " + quarters);
+//        System.out.println("Dimes: " + dimes);
+//        System.out.println("Nickels: " + nickels);
+//        // System.out.println("Pennies: " + pennies);
+//
+//    }
+}
 
 
 
@@ -106,4 +107,4 @@ public class Money {
         return addedBalanceBD;
     }*/
 
-}
+

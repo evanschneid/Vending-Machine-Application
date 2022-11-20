@@ -47,6 +47,10 @@ public abstract class Item {
         return priceBD;
     }
 
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
+    }
+
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
 

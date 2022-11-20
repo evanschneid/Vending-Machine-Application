@@ -71,7 +71,7 @@ public class UserOutput
         System.out.println("Please input whole dollar whole-amounts only.");
         System.out.println("Whole dollar amounts: $1=(1), $5=(5), $10=(10), or $20=(20)");
         System.out.println();
-        System.out.println("P) Select to go back to Purchase menu.");
+        System.out.println("0) Select to go back to Purchase menu.");
         System.out.println();
     }
 
@@ -94,6 +94,14 @@ public class UserOutput
     public static void displayFinalTransaction() {
         System.out.println();
         System.out.println("********Dispensing Change*********");
+
+//        int[] array = new int[4];
+//        array = money.getChange();
+//        System.out.println("Dollars: " + array[0]);
+//        System.out.println("Quarters: " + array[1]);
+//        System.out.println("Dimes: " + array[2]);
+//        System.out.println("Nickels: " + array[3]);
+
     }
 
 }
